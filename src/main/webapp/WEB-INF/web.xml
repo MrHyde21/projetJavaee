@@ -14,10 +14,19 @@
         <servlet-name>AccueilServlet</servlet-name>
         <servlet-class>ch.hesge.prog.AccueilServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListeProduitsServelet</servlet-name>
+        <servlet-class>ch.hesge.prog.ListeProduitsServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>AccueilServlet</servlet-name>
         <url-pattern>/Accueil</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListeProduitsServelet</servlet-name>
+        <url-pattern>/produits</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
