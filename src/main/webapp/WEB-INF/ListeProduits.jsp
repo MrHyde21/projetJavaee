@@ -44,10 +44,13 @@
         <img class="panier" src="../ressources/panier.png" >
     </div>
     <div class="produits">
+        <p><h1>Liste des produits</h1></p>
+        </br>
         <div class="produitI">
             <%for (Produit i : new Cart().getListProduits()) {%>
                 <% System.out.println("produit i: " + i.toString()); %>
                     <img class="produitI" src="<%=i.getImageSrc()%>">
+
             <%}%>
         </div>
     </div>
