@@ -26,8 +26,12 @@
         <servlet-name>ProductServlet</servlet-name>
         <servlet-class>ch.hesge.prog.servlet.ProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>ch.hesge.prog.servlet.PaymentServlet</servlet-class>
+    </servlet>
 
-    
+
     <servlet-mapping>
         <servlet-name>ProductServlet</servlet-name>
         <url-pattern>/produit</url-pattern>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>ListeProduitsServelet</servlet-name>
         <url-pattern>/produits</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/paiement</url-pattern>
     </servlet-mapping>
 
     <listener>
