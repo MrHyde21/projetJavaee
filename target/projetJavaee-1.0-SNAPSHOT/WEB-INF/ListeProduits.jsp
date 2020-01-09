@@ -1,4 +1,5 @@
 <%@ page import="ch.hesge.prog.model.Product" %>
+<%@ page import="ch.hesge.prog.initialization.Catalogue" %>
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,7 +8,7 @@
   Time: 12:18
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Liste des products</title>
@@ -82,7 +83,7 @@
     </nav>
     <div class="products">
         <p><h1>Liste des products</h1></p>
-        <br/>
+        </br>
         <div class="produitI">
             <%
                 List<Product> products = (List<Product>)request.getAttribute("products");

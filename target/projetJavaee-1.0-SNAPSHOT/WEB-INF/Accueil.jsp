@@ -5,13 +5,13 @@
   Time: 08:39
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 
     <title>Accueil</title>
     <style>
@@ -106,19 +106,19 @@
         <div id="productsCont">
             <div class="product" style="background-image: url('../ressources/product.jpg')">
                 <h2 class="prodTitle">Fit Cat</h2>
-                <div class="priceTag">CHF 999.-<img class="cartProduit" src="../ressources/cart.jpg" /></div>
+                <div class="priceTag">CHF 999.-<input class="cartProduit" type="image" src="../ressources/cart.jpg" /></div>
             </div>
             <div class="product" style="background-image: url('../ressources/djcat.jpg')">
                 <h2 class="prodTitle">DJ Cat</h2>
-                <div class="priceTag">CHF 42.-<img class="cartProduit" src="../ressources/cart.jpg" /></div>
+                <div class="priceTag">CHF 42.-<input class="cartProduit" type="image" src="../ressources/cart.jpg" /></div>
             </div>
             <div class="product" style="background-image: url('../ressources/product2.jpg')">
                 <h2 class="prodTitle">Cat Cat</h2>
-                <div class="priceTag">CHF 3.-<img class="cartProduit" src="../ressources/cart.jpg" /></div>
+                <div class="priceTag">CHF 3.-<input class="cartProduit" type="image" src="../ressources/cart.jpg" /></div>
             </div>
         </div>
     </div>
     <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 </html>
