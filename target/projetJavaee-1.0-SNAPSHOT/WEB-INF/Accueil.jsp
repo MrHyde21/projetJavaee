@@ -12,16 +12,21 @@
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/materialize.min.css"  media="screen,projection"/>
+    <!--Import bootstrap.css-->
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css"  media="screen,projection"/>
 
     <title>Accueil</title>
 </head>
 <body>
-    <div id="menuBar">
-
-    </div>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/Accueil">
+            <img class="pageAccueil" src="${pageContext.request.contextPath}/ressources/accueil.png" >
+        </a>
+        <a href="${pageContext.request.contextPath}/checkout">
+            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary">9</span>
+        </a>
+    </nav>
     <div id="main">
         <h1><a href="${pageContext.request.contextPath}/produits">Welcome to e-shop!</a></h1>
             <p id="desc">
