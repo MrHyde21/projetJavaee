@@ -45,20 +45,24 @@
     <div class="products">
         <p><h1>Liste des products</h1></p>
         <br/>
-        <div class="produitI">
-            <c:forEach var="product" items="${products}">
-                <a href="${pageContext.request.contextPath}/produit?id=${product.id}">
-                    <span class="product" style="background-image: url('${product.imageSrc}')">
-                            <h2 class="prodTitle">${product.nom}</h2>
-                            <div class="priceTag">
-                                CHF ${product.prix}.-
-                                <a href="${pageContext.request.contextPath}/checkout">
-                                 <img class="cartProduit" src="../ressources/cart.jpg"/>
-                                </a>
+        <div class="container" >
+            <div class="row">
+                <c:forEach var="product" items="${products}">
+                    <div class="col-sm d-flex flex-column justify-content-around">
+                        <a  href="${pageContext.request.contextPath}/produit?id=${product.id}">
+                            <div class="product" style="background-image: url('${product.imageSrc}')">
+                                <h2 class="prodTitle p-2">${product.nom}</h2>
+                                <div class="priceTag custom-control-inline p-2 align-self-center">
+                                    CHF ${product.prix}
+                                    <a href="${pageContext.request.contextPath}/checkout">
+                                        <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
+                                    </a>
+                                </div>
                             </div>
-                    </span>
-                </a>
-            </c:forEach>
+                        </a>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
     </div>
 

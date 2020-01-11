@@ -41,8 +41,8 @@ h1{
 .product{
     background-size: cover;
     padding: 20px;
-    height: 220px;
-    width: 250px;
+    height: 260px;
+    width: 300px;
     display: inline-block;
     margin-right: 11px;
 }
@@ -60,14 +60,9 @@ h1{
 }
 .priceTag{
     text-align: center;
-    justify-self: center;
 
-    margin : auto;
     background: linear-gradient(90deg,#fce3ec,#ffe8cc);
     opacity: 80%;
     font-weight: bold;
     font-size: 25px;
-    width: 75%;
-    position:relative;
-    top : 70%;
 }
