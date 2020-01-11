@@ -39,7 +39,7 @@
             <img class="pageAccueil" src="${pageContext.request.contextPath}/ressources/accueil.png" >
         </a>
         <a href="${pageContext.request.contextPath}/checkout">
-            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" >
+            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary">0</span>
         </a>
     </nav>
     <div class="products">
@@ -48,9 +48,10 @@
         <div class="container" >
             <div class="row">
                 <c:forEach var="product" items="${products}">
-                    <div class="col-sm d-flex flex-column justify-content-around">
+                    <div class="col-sm">
                         <a  href="${pageContext.request.contextPath}/produit?id=${product.id}">
-                            <div class="product" style="background-image: url('${product.imageSrc}')">
+                            <span>
+                            <div class="product d-flex flex-column justify-content-between" style="background-image: url('${product.imageSrc}')">
                                 <h2 class="prodTitle p-2">${product.nom}</h2>
                                 <div class="priceTag custom-control-inline p-2 align-self-center">
                                     CHF ${product.prix}
@@ -59,6 +60,7 @@
                                     </a>
                                 </div>
                             </div>
+                            </span>
                         </a>
                     </div>
                 </c:forEach>
