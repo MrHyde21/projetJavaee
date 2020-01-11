@@ -11,24 +11,11 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"  media="screen,projection"/>
     <title>Liste des products</title>
     <style>
-        body{
-            margin : 0
-        }
-        .menuBar {
-            width: 100%;
-            height: 50px;
-            background-color: aliceblue;
-            padding: 0;
-            margin: 0;
-        }
-        .pageAccueil {
-            object-position: top left;
-        }
-        .panier {
-            object-position: top right;
-        }
+
         .products {
             width : 80%;
             min-width : 400px;
@@ -44,47 +31,16 @@
             vertical-align: middle;
             text-align: center;
         }
-        .product{
-            background-size: cover;
-            padding: 20px;
-            height: 220px;
-            width: 250px;
-            display: inline-block;
-            margin-right: 11px;
-            text-align: center;
-        }
-        .prodTitle{
-            background: linear-gradient(90deg,#fce3ec,#ffe8cc);
-            font-weight: bold;
-            opacity: 80%;
-            display: inline;
-            position: relative;
-            text-align: center;
-        }
-        .priceTag{
-            text-align: center;
-            justify-self: center;
-
-            margin : auto;
-            background: linear-gradient(90deg,#fce3ec,#ffe8cc);
-            opacity: 80%;
-            font-weight: bold;
-            font-size: 25px;
-            width: 75%;
-            position:relative;
-            top : 70%;
-        }
     </style>
 </head>
 <body>
-    <nav class="menuBar">
-        <a href="${pageContext.request.contextPath}/Accueil">
-            <img class="pageAccueil" src="../ressources/accueil.png" >
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/Accueil">
+            <img class="pageAccueil" src="${pageContext.request.contextPath}/ressources/accueil.png" >
         </a>
         <a href="${pageContext.request.contextPath}/checkout">
-            <img class="panier" src="../ressources/panier.png" >
+            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" >
         </a>
-
     </nav>
     <div class="products">
         <p><h1>Liste des products</h1></p>
