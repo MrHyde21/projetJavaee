@@ -23,7 +23,7 @@ public class DataInitializer implements ServletContextListener {
         productService.saveProduct(new Product("Kit Cat", "Chat méchant", 5.75, "../ressources/kitcat.jpg"));
         productService.saveProduct(new Product("CAT", "Chat méchant", 80000.0, "../ressources/CAT.jpg"));
         productService.saveProduct(new Product("Cat Cat", "Chat méchant", 2.0, "../ressources/catcat.jpg"));
-        productService.saveProduct(new Product("Big Cat", "Chat méchant", 5000.0, "../ressources/catcat.jpg"));
+        productService.saveProduct(new Product("Big Cat", "Chat méchant", 5000.0, "../ressources/bigcat.jpg"));
     }
 
     @Override
