@@ -1,13 +1,4 @@
-<%@ page import="ch.hesge.prog.model.Product" %>
-<%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: krys
-  Date: 31.12.19
-  Time: 12:18
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
@@ -15,7 +6,6 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"  media="screen,projection"/>
     <title>Liste des products</title>
     <style>
-
         .products {
             width : 80%;
             min-width : 400px;
@@ -39,18 +29,22 @@
             <img class="pageAccueil" src="${pageContext.request.contextPath}/ressources/accueil.png" >
         </a>
         <a href="${pageContext.request.contextPath}/checkout">
-            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary">0</span>
+            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary"><jsp:include page="/WEB-INF/Caddie.jsp" /></span>
         </a>
     </nav>
     <div class="products">
         <p><h1>Liste des products</h1></p>
         <br/>
         <div class="container" >
+            <div>
+                <% if(request.getParameter("payment")!=null){%>
+                    <h2>Merci pour votre commande</h2>
+                <%}%>
+            </div>
             <div class="row">
                 <c:forEach var="product" items="${products}">
                     <div class="col-sm">
                         <a  href="${pageContext.request.contextPath}/produit?id=${product.id}">
-                            <span>
                             <div class="product d-flex flex-column justify-content-between" style="background-image: url('${product.imageSrc}')">
                                 <h2 class="prodTitle p-2">${product.nom}</h2>
                                 <div class="priceTag custom-control-inline p-2 align-self-center">
@@ -60,13 +54,11 @@
                                     </a>
                                 </div>
                             </div>
-                            </span>
                         </a>
                     </div>
                 </c:forEach>
             </div>
         </div>
     </div>
-
 </body>
 </html>

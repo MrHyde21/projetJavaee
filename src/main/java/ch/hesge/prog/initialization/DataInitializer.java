@@ -7,8 +7,6 @@ import javax.ejb.EJB;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebListener
 public class DataInitializer implements ServletContextListener {

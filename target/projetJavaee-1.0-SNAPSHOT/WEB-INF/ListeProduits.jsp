@@ -1,13 +1,4 @@
-<%@ page import="ch.hesge.prog.model.Product" %>
-<%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: krys
-  Date: 31.12.19
-  Time: 12:18
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
@@ -15,7 +6,6 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"  media="screen,projection"/>
     <title>Liste des products</title>
     <style>
-
         .products {
             width : 80%;
             min-width : 400px;
@@ -39,26 +29,35 @@
             <img class="pageAccueil" src="${pageContext.request.contextPath}/ressources/accueil.png" >
         </a>
         <a href="${pageContext.request.contextPath}/checkout">
-            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" >
+            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary"><jsp:include page="/WEB-INF/Caddie.jsp" /></span>
         </a>
     </nav>
     <div class="products">
         <p><h1>Liste des products</h1></p>
         <br/>
-        <div class="produitI">
-            <c:forEach var="product" items="${products}">
-                <a href="${pageContext.request.contextPath}/produit?id=${product.id}">
-                    <span class="product" style="background-image: url('${product.imageSrc}')">
-                            <h2 class="prodTitle">${product.nom}</h2>
-                            <div class="priceTag">
-                                CHF ${product.prix}.-
-                                <a href="${pageContext.request.contextPath}/checkout">
-                                 <img class="cartProduit" src="../ressources/cart.jpg"/>
-                                </a>
+        <div class="container" >
+            <div>
+                <% if(request.getParameter("payment")!=null){%>
+                    <h2>Merci pour votre commande</h2>
+                <%}%>
+            </div>
+            <div class="row">
+                <c:forEach var="product" items="${products}">
+                    <div class="col-sm">
+                        <a  href="${pageContext.request.contextPath}/produit?id=${product.id}">
+                            <div class="product d-flex flex-column justify-content-between" style="background-image: url('${product.imageSrc}')">
+                                <h2 class="prodTitle p-2">${product.nom}</h2>
+                                <div class="priceTag custom-control-inline p-2 align-self-center">
+                                    CHF ${product.prix}
+                                    <a href="${pageContext.request.contextPath}/checkout">
+                                        <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
+                                    </a>
+                                </div>
                             </div>
-                    </span>
-                </a>
-            </c:forEach>
+                        </a>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
     </div>
 

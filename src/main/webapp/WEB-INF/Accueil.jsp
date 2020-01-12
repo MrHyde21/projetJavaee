@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: chadi
-  Date: 07.10.2019
-  Time: 08:39
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -24,7 +17,7 @@
             <img class="pageAccueil" src="${pageContext.request.contextPath}/ressources/accueil.png" >
         </a>
         <a href="${pageContext.request.contextPath}/checkout">
-            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary">9</span>
+            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary"><jsp:include page="/WEB-INF/Caddie.jsp" /></span>
         </a>
     </nav>
     <div id="main">

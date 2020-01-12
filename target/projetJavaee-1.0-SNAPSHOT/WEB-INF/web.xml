@@ -1,9 +1,3 @@
-<!-- <?xml version="1.0" encoding="ISO-8859-1"?>
-
-<!DOCTYPE web-app
-        PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd">
--->
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
@@ -30,8 +24,15 @@
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>ch.hesge.prog.servlet.PaymentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>ch.hesge.prog.servlet.CartServlet</servlet-class>
+    </servlet>
 
-
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/caddie/*</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProductServlet</servlet-name>
         <url-pattern>/produit</url-pattern>
@@ -56,6 +57,32 @@
     <listener>
         <listener-class>ch.hesge.prog.initialization.DataInitializer</listener-class>
     </listener>
+    
+    <filter>
+        <filter-name>AddProduct</filter-name>
+        <filter-class>ch.hesge.prog.filter.AddProductFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>DecrementProduct</filter-name>
+        <filter-class>ch.hesge.prog.filter.DecrementProductFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>DeleteProduct</filter-name>
+        <filter-class>ch.hesge.prog.filter.DeleteProductRowFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AddProduct</filter-name>
+        <url-pattern>/caddie/add</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>DecrementProduct</filter-name>
+        <url-pattern>/caddie/decrement</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>DeleteProduct</filter-name>
+        <url-pattern>/caddie/delete</url-pattern>
+    </filter-mapping>
 
     <error-page>
         <error-code>500</error-code>
