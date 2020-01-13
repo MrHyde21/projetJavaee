@@ -22,7 +22,6 @@ public class CheckoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HashMap<Product, Integer> cart = (HashMap<Product, Integer>) req.getSession().getAttribute("cart");
         String action = (String) req.getParameter("action");
-        String contextPath = req.getContextPath();
         String idProduct = req.getParameter("id");
         Product product = null;
 
@@ -48,7 +47,6 @@ public class CheckoutServlet extends HttpServlet {
                 if (cart.get(product) > 1) {
                     cart.replace(product, cart.get(product) - 1);
                 }
-                //
                 req.getSession().setAttribute("cart", cart);
                 req.setAttribute("cart", cart);
                 req.getSession().setAttribute("sumCart", getSumCart(cart));
@@ -56,7 +54,6 @@ public class CheckoutServlet extends HttpServlet {
                 req.getRequestDispatcher( "/WEB-INF/Checkout.jsp").forward(req, resp);
             } else if (action.equals("delete")) {
                 cart.remove(product);
-                //
                 req.getSession().setAttribute("cart", cart);
                 req.setAttribute("cart", cart);
                 req.getSession().setAttribute("sumCart", getSumCart(cart));
@@ -65,7 +62,6 @@ public class CheckoutServlet extends HttpServlet {
             }
 
         }
-        //req.getRequestDispatcher(contextPath+"WEB-INF/Checkout.jsp").forward(req, resp);
     }
 
     private Double getSumCart(HashMap<Product, Integer> cart){
@@ -83,5 +79,4 @@ public class CheckoutServlet extends HttpServlet {
         }
         return nb;
     }
-
 }

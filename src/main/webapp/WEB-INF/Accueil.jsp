@@ -40,7 +40,7 @@
                 <c:forEach var="product" items="${selection}">
                     <div class="col-sm">
                         <a  href="${pageContext.request.contextPath}/produit?id=${product.id}">
-                            <div class="product d-flex flex-column justify-content-between" style="background-image: url('${product.imageSrc}')">
+                            <div class="product d-flex flex-column justify-content-between" style="background-image: url('${pageContext.request.contextPath}/${product.imageSrc}')">
                                     <h2 class="prodTitle p-2">${product.nom}</h2>
                                     <div class="priceTag custom-control-inline p-2 align-self-center">
                                         CHF ${product.prix}
