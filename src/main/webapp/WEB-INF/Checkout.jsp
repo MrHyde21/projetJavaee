@@ -9,53 +9,35 @@
 <body>
     <div>
         <table border="1">
-            <%
-                Map<Product, Integer> cart = (Map<Product, Integer>)request.getSession().getAttribute("cart");
-                System.out.println("cart="+cart);
-                System.out.println(cart.isEmpty());
-                Double totalAmount = 0.0;
-                if(cart.isEmpty() || cart == null){
-                    System.out.println("emptyCart");
-                }else{
-                    System.out.println("fullcart");
-                    for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
-                        Product product = entry.getKey();
-                        int qty = entry.getValue();
-                        Double rowAmount = product.getPrix() * qty;
-                        totalAmount += rowAmount;
-            %>
-            <tr>
-                <td>
-                    <%=product.getNom()%>
-                </td>
-                <td>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/add">
-                        <button id="<%=product.getId()%>"> + </button>
-                    </form>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/decrement">
-                        <button id="<%=product.getId()%>"> - </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/delete">
-                        <button id="<%=product.getId()%>">
-                            <img src="${pageContext.request.contextPath}/ressources/poubelle.png" class="trash">
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    CHF <%=rowAmount.toString()%>.-
-                </td>
-            </tr>
-            <%
-                    }
-                }
-                request.getSession().setAttribute("totalAmount", totalAmount);
-            %>
+            <c:forEach items="cart" var="product">
+                <tr>
+                    <td>
+                        ${product.key.getNom()}
+                    </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/checkout?idProduct=${product.getKey().getId()}&action=add">
+                            <button id="${product.getKey().getId()}"> + </button>
+                        </a>
+                        <a href="${pageContext.request.contextPath}/checkout?idProduct=${product.getKey().getId()}&action=remove">
+                            <button id="${product.getKey().getId()}"> - </button>
+                        </a>
+                    </td>
+                    <td>
+                        <form method="post" action="${pageContext.request.contextPath}/caddie/delete">
+                            <button id="${product.getKey().getId()}">
+                                <img src="../ressources/poubelle.png" class="trash">
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        CHF <c:out value="${product.getKey().getPrix()*product.getValue()}"/> .-
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
         <div>
             <h3>Total</h3>
-            <h3>CHF <%=totalAmount%>.-</h3>
+            <%--<h3>CHF <%=totalAmount%>.-</h3>--%>
         </div>
         <div>
             <a href="${pageContext.request.contextPath}/produits">Back to shopping</a>
