@@ -42,13 +42,14 @@ public class CheckoutServlet extends HttpServlet {
                 req.setAttribute("cart", cart);
                 req.getSession().setAttribute("sumCart", getSumCart(cart));
                 req.getSession().setAttribute("nbCartItems", getNbCartItems(cart));
+                if(page != null){
                 if(page.equals("home")){
                     resp.sendRedirect("/Accueil");
                 }  else if(page.equals("list")){
                     resp.sendRedirect("/produits");
                 } else if (page.equals("detail")){
                     resp.sendRedirect("/produit?id="+idProduct);
-                }
+                }}
                 else req.getRequestDispatcher( "/WEB-INF/Checkout.jsp").forward(req, resp);
             } else if (action.equals("remove")) {
                 if (cart.get(product) > 1) {

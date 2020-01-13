@@ -20,8 +20,8 @@
     <div class="main">
         <p>
         <h1>${product.nom}</h1>
-        <img align="right" src="${product.imageSrc[0]}">
-        <img align="right" src="${product.imageSrc[1]}">
+        <img width="300" height="260" align="right" src="${product.imageSrc[0]}">
+        <img width="300" height="260" align="right" src="${product.imageSrc[1]}">
         ${product.description}<br/>
         CHF ${product.prix}.-
         <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add&page=detail">

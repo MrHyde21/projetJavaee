@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class PaymentServlet extends HttpServlet {
@@ -17,7 +18,7 @@ public class PaymentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Map<Product, Integer> cart = (Map<Product, Integer>) req.getSession().getAttribute("cart");
+        HashMap<Product, Integer> cart = (HashMap<Product, Integer>) req.getSession().getAttribute("cart");
         cart.clear();
         req.getSession().setAttribute("cart", cart);
         req.getSession().setAttribute("nbCartItems", 0);
