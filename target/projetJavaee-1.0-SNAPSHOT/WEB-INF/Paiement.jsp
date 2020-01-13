@@ -6,7 +6,7 @@
 <body>
     <p>
         <form method="post" action="${pageContext.request.contextPath}/paiement">
-            <p>Somme : <%=request.getSession().getAttribute("totalAmount")%></p>
+            <p>Somme : CHF ${sumCart}</p>
             <label for="name">Nom</label>
             <input type="text" name="name" id="name" placeholder="Ex. Jean Dupont" size="30" maxlength="10"/>
             <br/>

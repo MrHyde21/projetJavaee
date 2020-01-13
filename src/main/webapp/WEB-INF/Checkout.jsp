@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="ch.hesge.prog.model.Product" %>
+<%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
@@ -9,34 +10,35 @@
 <body>
     <div>
         <table border="1">
-            <c:forEach items="cart" var="product">
+            <c:forEach items="${cart}" var="product">
                 <tr>
                     <td>
                         ${product.key.getNom()}
                     </td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/checkout?idProduct=${product.getKey().getId()}&action=add">
-                            <button id="${product.getKey().getId()}"> + </button>
+                        ${product.value}
+                        <a href="${pageContext.request.contextPath}/checkout?id=${product.getKey().getId()}&action=add">
+                            <button id="${product.key.getId()}"> + </button>
                         </a>
-                        <a href="${pageContext.request.contextPath}/checkout?idProduct=${product.getKey().getId()}&action=remove">
-                            <button id="${product.getKey().getId()}"> - </button>
+                        <a href="${pageContext.request.contextPath}/checkout?id=${product.getKey().getId()}&action=remove">
+                            <button id="${product.key.getId()}"> - </button>
                         </a>
                     </td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/caddie/delete">
-                            <button id="${product.getKey().getId()}">
+                        <a href="${pageContext.request.contextPath}/checkout?id=${product.getKey().getId()}&action=delete">
+                            <button id="${product.key.getId()}">
                                 <img src="../ressources/poubelle.png" class="trash">
                             </button>
-                        </form>
+                        </a>
                     </td>
                     <td>
-                        CHF <c:out value="${product.getKey().getPrix()*product.getValue()}"/> .-
+                        CHF <c:out value="${product.key.getPrix()*product.value}"/> .-
                     </td>
                 </tr>
             </c:forEach>
         </table>
         <div>
-            <h3>Total</h3>
+            <h3>Total CHF ${sumCart} .-</h3>
             <%--<h3>CHF <%=totalAmount%>.-</h3>--%>
         </div>
         <div>

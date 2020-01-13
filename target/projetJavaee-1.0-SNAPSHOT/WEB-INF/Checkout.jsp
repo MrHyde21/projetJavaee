@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="ch.hesge.prog.model.Product" %>
+<%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
@@ -9,44 +10,36 @@
 <body>
     <div>
         <table border="1">
-            <%
-                Map<Product, Integer> cart = (Map<Product, Integer>)request.getAttribute("cartProducts");
-                Double totalAmount = 0.0;
-                for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
-                    Product product = (Product)entry.getKey();
-                    int qty = (Integer)entry.getValue();
-                    Double rowAmount = product.getPrix() * qty;
-                    totalAmount += rowAmount;
-            %>
-            <tr>
-                <td>
-                    <%=product.getNom()%>
-                </td>
-                <td>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/add">
-                        <button id="<%=product.getId()%>"> + </button>
-                    </form>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/decrement">
-                        <button id="<%=product.getId()%>"> - </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/delete">
-                        <button id="<%=product.getId()%>">
-                            <img src="../ressources/poubelle.png" class="trash">
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    CHF <%=rowAmount.toString()%>.-
-                </td>
-            </tr>
-            <%}
-                request.getSession().setAttribute("totalAmount", totalAmount);%>
+            <c:forEach items="${cart}" var="product">
+                <tr>
+                    <td>
+                        ${product.key.getNom()}
+                    </td>
+                    <td>
+                        ${product.value}
+                        <a href="${pageContext.request.contextPath}/checkout?id=${product.getKey().getId()}&action=add">
+                            <button id="${product.key.getId()}"> + </button>
+                        </a>
+                        <a href="${pageContext.request.contextPath}/checkout?id=${product.getKey().getId()}&action=remove">
+                            <button id="${product.key.getId()}"> - </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/checkout?id=${product.getKey().getId()}&action=delete">
+                            <button id="${product.key.getId()}">
+                                <img src="../ressources/poubelle.png" class="trash">
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        CHF <c:out value="${product.key.getPrix()*product.value}"/> .-
+                    </td>
+                </tr>
+            </c:forEach>
         </table>
         <div>
-            <h3>Total</h3>
-            <h3>CHF <%=totalAmount%>.-</h3>
+            <h3>Total CHF ${sumCart} .-</h3>
+            <%--<h3>CHF <%=totalAmount%>.-</h3>--%>
         </div>
         <div>
             <a href="${pageContext.request.contextPath}/produits">Back to shopping</a>

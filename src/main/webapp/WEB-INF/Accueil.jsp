@@ -17,7 +17,7 @@
             <img class="pageAccueil" src="${pageContext.request.contextPath}/ressources/accueil.png" >
         </a>
         <a href="${pageContext.request.contextPath}/checkout">
-            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary"><jsp:include page="/WEB-INF/Caddie.jsp" /></span>
+            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary">${nbCartItems}</span>
         </a>
     </nav>
     <div id="main">
@@ -44,7 +44,7 @@
                                     <h2 class="prodTitle p-2">${product.nom}</h2>
                                     <div class="priceTag custom-control-inline p-2 align-self-center">
                                         CHF ${product.prix}
-                                        <a href="${pageContext.request.contextPath}/checkout">
+                                        <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add">
                                          <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
                                         </a>
                                     </div>

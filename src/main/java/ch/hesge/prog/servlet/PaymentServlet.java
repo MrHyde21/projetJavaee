@@ -20,6 +20,7 @@ public class PaymentServlet extends HttpServlet {
         Map<Product, Integer> cart = (Map<Product, Integer>) req.getSession().getAttribute("cart");
         cart.clear();
         req.getSession().setAttribute("cart", cart);
-        resp.sendRedirect(req.getContextPath() + "produits?payment=ok");
+        req.getSession().setAttribute("nbCartItems", 0);
+        resp.sendRedirect("/produits?payment=ok");
     }
 }

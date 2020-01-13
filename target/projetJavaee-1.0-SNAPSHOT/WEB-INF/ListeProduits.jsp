@@ -4,7 +4,7 @@
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"  media="screen,projection"/>
-    <title>Liste des products</title>
+    <title>Liste des produits</title>
     <style>
         .products {
             width : 80%;
@@ -29,7 +29,7 @@
             <img class="pageAccueil" src="${pageContext.request.contextPath}/ressources/accueil.png" >
         </a>
         <a href="${pageContext.request.contextPath}/checkout">
-            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary"><jsp:include page="/WEB-INF/Caddie.jsp" /></span>
+            <img class="panierBtn" src="${pageContext.request.contextPath}/ressources/panier.png" ><span class="badge badge-primary">${nbCartItems}</span>
         </a>
     </nav>
     <div class="products">
@@ -37,9 +37,10 @@
         <br/>
         <div class="container" >
             <div>
-                <% if(request.getParameter("payment")!=null){%>
+
+                <%--if(request.getParameter("payment")!=null){%>
                     <h2>Merci pour votre commande</h2>
-                <%}%>
+                <%}--%>
             </div>
             <div class="row">
                 <c:forEach var="product" items="${products}">
@@ -49,7 +50,8 @@
                                 <h2 class="prodTitle p-2">${product.nom}</h2>
                                 <div class="priceTag custom-control-inline p-2 align-self-center">
                                     CHF ${product.prix}
-                                    <a href="${pageContext.request.contextPath}/checkout">
+
+                                    <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add">
                                         <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
                                     </a>
                                 </div>
@@ -60,6 +62,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>

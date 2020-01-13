@@ -10,7 +10,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String nom;
     private String description;
     private Double prix;
@@ -25,7 +25,7 @@ public class Product {
         this.imageSrc = imageSrc;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -45,7 +45,7 @@ public class Product {
         this.imageSrc = imageSrc;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -63,6 +63,16 @@ public class Product {
 
     public String getImageSrc() {
         return imageSrc;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(this.id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return ((Product) obj).getId() == this.id;
     }
 
     @Override

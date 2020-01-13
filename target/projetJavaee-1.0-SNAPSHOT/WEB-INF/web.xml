@@ -57,40 +57,10 @@
     <listener>
         <listener-class>ch.hesge.prog.initialization.DataInitializer</listener-class>
     </listener>
-    
-    <filter>
-        <filter-name>AddProduct</filter-name>
-        <filter-class>ch.hesge.prog.filter.AddProductFilter</filter-class>
-    </filter>
-    <filter>
-        <filter-name>DecrementProduct</filter-name>
-        <filter-class>ch.hesge.prog.filter.DecrementProductFilter</filter-class>
-    </filter>
-    <filter>
-        <filter-name>DeleteProduct</filter-name>
-        <filter-class>ch.hesge.prog.filter.DeleteProductRowFilter</filter-class>
-    </filter>
+    <listener>
+        <listener-class>ch.hesge.prog.initialization.SessionListener</listener-class>
+    </listener>
 
-    <filter-mapping>
-        <filter-name>AddProduct</filter-name>
-        <url-pattern>/caddie/add</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>DecrementProduct</filter-name>
-        <url-pattern>/caddie/decrement</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>DeleteProduct</filter-name>
-        <url-pattern>/caddie/delete</url-pattern>
-    </filter-mapping>
 
-    <error-page>
-        <error-code>500</error-code>
-        <location>/WEB-INF/Error500.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/WEB-INF/Error404.jsp</location>
-    </error-page>
 
 </web-app>
