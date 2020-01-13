@@ -19,6 +19,6 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().setAttribute("cart", new HashMap<Product, Integer>());
-        resp.sendRedirect(req.getContextPath() + "WEB-INF/produits?payment=ok");
+        resp.sendRedirect(req.getContextPath() + "produits?payment=ok");
     }
 }

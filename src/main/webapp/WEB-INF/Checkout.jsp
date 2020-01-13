@@ -10,7 +10,7 @@
     <div>
         <table border="1">
             <%
-                Map<Product, Integer> cart = (Map<Product, Integer>)request.getAttribute("cartProducts");
+                Map<Product, Integer> cart = (Map<Product, Integer>)request.getSession().getAttribute("cart");
                 System.out.println("cart="+cart);
                 System.out.println(cart.isEmpty());
                 Double totalAmount = 0.0;
@@ -39,7 +39,7 @@
                 <td>
                     <form method="post" action="${pageContext.request.contextPath}/caddie/delete">
                         <button id="<%=product.getId()%>">
-                            <img src="../ressources/poubelle.png" class="trash">
+                            <img src="${pageContext.request.contextPath}/ressources/poubelle.png" class="trash">
                         </button>
                     </form>
                 </td>
