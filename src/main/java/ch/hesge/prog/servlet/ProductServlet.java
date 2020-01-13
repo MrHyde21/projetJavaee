@@ -17,7 +17,7 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.parseLong(req.getParameter("id"));
+        int id = Integer.parseInt(req.getParameter("id"));
         Product product = productService.getProduct(id);
         req.setAttribute("product", product);
         req.getRequestDispatcher("/WEB-INF/DetailProduit.jsp").forward(req, resp);

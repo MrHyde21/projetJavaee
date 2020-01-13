@@ -50,7 +50,7 @@
                                 <h2 class="prodTitle p-2">${product.nom}</h2>
                                 <span class="priceTag custom-control-inline p-2 align-self-center">
                                     CHF ${product.prix}
-                                    <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add">
+                                    <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add&page=list">
                                         <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
                                     </a>
                                 </span>

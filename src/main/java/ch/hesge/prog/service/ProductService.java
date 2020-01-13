@@ -25,7 +25,7 @@ public class ProductService {
         entityManager.clear();
     }
 
-    public Product getProduct(Long id) {
+    public Product getProduct(int id) {
         return entityManager.find(Product.class, id);
     }
 }

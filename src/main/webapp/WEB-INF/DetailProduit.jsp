@@ -24,7 +24,7 @@
         <img align="right" src="${product.imageSrc[1]}">
         ${product.description}<br/>
         CHF ${product.prix}.-
-        <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add">
+        <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add&page=detail">
             <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
         </a>
         </p>
