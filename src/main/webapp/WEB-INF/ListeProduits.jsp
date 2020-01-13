@@ -4,7 +4,7 @@
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"  media="screen,projection"/>
-    <title>Liste des products</title>
+    <title>Liste des produits</title>
     <style>
         .products {
             width : 80%;
@@ -49,7 +49,7 @@
                                 <h2 class="prodTitle p-2">${product.nom}</h2>
                                 <div class="priceTag custom-control-inline p-2 align-self-center">
                                     CHF ${product.prix}
-                                    <a href="${pageContext.request.contextPath}/checkout">
+                                    <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add">
                                         <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
                                     </a>
                                 </div>

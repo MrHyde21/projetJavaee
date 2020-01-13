@@ -10,7 +10,7 @@
     <div>
         <table border="1">
             <%
-                Map<Product, Integer> cart = (Map<Product, Integer>)request.getAttribute("cartProducts");
+                Map<Product, Integer> cart = (Map<Product, Integer>)request.getSession().getAttribute("cart");
                 Double totalAmount = 0.0;
                 for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
                     Product product = (Product)entry.getKey();
@@ -23,19 +23,17 @@
                     <%=product.getNom()%>
                 </td>
                 <td>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/add">
+                    <a href="${pageContext.request.contextPath}/checkout?idProduct=${product.id}&action=add">
                         <button id="<%=product.getId()%>"> + </button>
-                    </form>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/decrement">
+                    </a>
+                    <a href="${pageContext.request.contextPath}/checkout?idProduct=${product.id}&action=remove">
                         <button id="<%=product.getId()%>"> - </button>
-                    </form>
+                    </a>
                 </td>
                 <td>
-                    <form method="post" action="${pageContext.request.contextPath}/caddie/delete">
-                        <button id="<%=product.getId()%>">
-                            <img src="../ressources/poubelle.png" class="trash">
-                        </button>
-                    </form>
+                    <a href="${pageContext.request.contextPath}/checkout?idProduct=${product.id}&action=delete">
+                        <img src="${pageContext.request.contextPath}/ressources/poubelle.png" class="trash">
+                    </a>
                 </td>
                 <td>
                     CHF <%=rowAmount.toString()%>.-

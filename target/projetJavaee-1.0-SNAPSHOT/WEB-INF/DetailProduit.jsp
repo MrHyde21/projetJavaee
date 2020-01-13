@@ -13,6 +13,12 @@
         .panier {
              object-position: top right;
          }
+        .cartProduit{
+            height: 40px;
+            width: 40px;
+            vertical-align: middle;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -26,10 +32,13 @@
     </nav>
 
     <p>
-        <h3>${product.nom}</h3>
+        <h1>${product.nom}</h1>
         <img align="right" src="${product.imageSrc}">
         ${product.description}<br/>
         CHF ${product.prix}.-
+        <a href="${pageContext.request.contextPath}/checkout">
+            <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
+        </a>
     </p>
 </body>
 </html>
