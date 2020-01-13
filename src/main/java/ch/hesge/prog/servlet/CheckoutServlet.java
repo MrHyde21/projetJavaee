@@ -64,8 +64,8 @@ public class CheckoutServlet extends HttpServlet {
         }
     }
 
-    private Double getSumCart(HashMap<Product, Integer> cart){
-        Double sum = 0.0;
+    private int getSumCart(HashMap<Product, Integer> cart){
+        int sum = 0;
         for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
             sum += entry.getValue() * entry.getKey().getPrix();
         }

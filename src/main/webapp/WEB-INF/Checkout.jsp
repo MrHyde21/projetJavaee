@@ -32,13 +32,13 @@
                         </a>
                     </td>
                     <td>
-                        CHF <c:out value="${product.key.getPrix()*product.value}"/>
+                        CHF <c:out value="${product.key.getPrix()*product.value}"/>.-
                     </td>
                 </tr>
             </c:forEach>
         </table>
         <div>
-            <h3>Total CHF ${sumCart}</h3>
+            <h3>Total CHF ${sumCart}.-</h3>
             <%--<h3>CHF <%=totalAmount%>.-</h3>--%>
         </div>
         <div>

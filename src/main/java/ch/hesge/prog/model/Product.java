@@ -1,9 +1,7 @@
 package ch.hesge.prog.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -13,12 +11,13 @@ public class Product {
     private int id;
     private String nom;
     private String description;
-    private Double prix;
-    private String imageSrc;
+    private int prix;
+    @Convert(converter = StringListConverter.class)
+    private String[] imageSrc;
 
     public Product() { }
 
-    public Product(String nom, String description, Double prix, String imageSrc) {
+    public Product(String nom, String description, int prix, String[] imageSrc) {
         this.nom = nom;
         this.description = description;
         this.prix = prix;
@@ -37,11 +36,11 @@ public class Product {
         this.description = description;
     }
 
-    public void setPrix(Double prix) {
+    public void setPrix(int prix) {
         this.prix = prix;
     }
 
-    public void setImageSrc(String imageSrc) {
+    public void setImageSrc(String[] imageSrc) {
         this.imageSrc = imageSrc;
     }
 
@@ -57,11 +56,11 @@ public class Product {
         return description;
     }
 
-    public Double getPrix() {
+    public int getPrix() {
         return prix;
     }
 
-    public String getImageSrc() {
+    public String[] getImageSrc() {
         return imageSrc;
     }
 

@@ -22,6 +22,12 @@
             text-align: center;
         }
     </style>
+    <c:if test = "${param.payment.equals('ok')}">
+        <script>
+            alert("Merci de votre paiement");
+        </script>
+        <% System.out.println("TEST");%>
+    </c:if>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light justify-content-between">
@@ -36,26 +42,19 @@
         <p><h1>Liste des products</h1></p>
         <br/>
         <div class="container" >
-            <div>
-
-                <%--if(request.getParameter("payment")!=null){%>
-                    <h2>Merci pour votre commande</h2>
-                <%}--%>
-            </div>
             <div class="row">
                 <c:forEach var="product" items="${products}">
                     <div class="col-sm">
                         <a  href="${pageContext.request.contextPath}/produit?id=${product.id}">
-                            <div class="product d-flex flex-column justify-content-between" style="background-image: url('${product.imageSrc}')">
+                            <span class="product d-flex flex-column justify-content-between" style="background-image: url('${pageContext.request.contextPath}/${product.imageSrc[0]}')">
                                 <h2 class="prodTitle p-2">${product.nom}</h2>
-                                <div class="priceTag custom-control-inline p-2 align-self-center">
+                                <span class="priceTag custom-control-inline p-2 align-self-center">
                                     CHF ${product.prix}
-
                                     <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add">
                                         <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
                                     </a>
-                                </div>
-                            </div>
+                                </span>
+                            </span>
                         </a>
                     </div>
                 </c:forEach>

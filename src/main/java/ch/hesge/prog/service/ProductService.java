@@ -21,6 +21,10 @@ public class ProductService {
         entityManager.persist(p);
     }
 
+    public void clear(){
+        entityManager.clear();
+    }
+
     public Product getProduct(Long id) {
         return entityManager.find(Product.class, id);
     }

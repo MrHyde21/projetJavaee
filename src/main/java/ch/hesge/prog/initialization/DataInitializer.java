@@ -7,6 +7,8 @@ import javax.ejb.EJB;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataInitializer implements ServletContextListener {
 
@@ -15,12 +17,14 @@ public class DataInitializer implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        productService.saveProduct(new Product("Fit Cat", "Chat méchant", 999.0, "../ressources/fitcat.jpg"));
-        productService.saveProduct(new Product("DJ Cat", "Chat méchant", 200.0, "../ressources/djcat.jpg"));
-        productService.saveProduct(new Product("Kit Cat", "Chat méchant", 5.75, "../ressources/kitcat.jpg"));
-        productService.saveProduct(new Product("CAT", "Chat méchant", 80000.0, "../ressources/CAT.jpg"));
-        productService.saveProduct(new Product("Cat Cat", "Chat méchant", 2.0, "../ressources/catcat.jpg"));
-        productService.saveProduct(new Product("Big Cat", "Chat méchant", 5000.0, "../ressources/bigcat.jpg"));
+        productService.clear();
+
+        productService.saveProduct(new Product("Fit Cat", "Chat méchant", 999, new String[]{"../ressources/fitcat.jpg","../ressources/fitcat.jpg"}));
+        productService.saveProduct(new Product("DJ Cat", "Chat méchant", 200, new String[]{"../ressources/djcat.jpg","../ressources/djcat.jpg"}));
+        productService.saveProduct(new Product("Kit Cat", "Chat méchant", 5, new String[]{"../ressources/kitkat.jpg","../ressources/kitkat.jpg"}));
+        productService.saveProduct(new Product("CAT", "Chat méchant", 80000, new String[]{"../ressources/CAT.jpg","../ressources/CAT.jpg"}));
+        productService.saveProduct(new Product("Cat Cat", "Chat méchant", 2, new String[]{"../ressources/catcat.jpg","../ressources/catcat.jpg"}));
+        productService.saveProduct(new Product("Big Cat", "Chat méchant", 5000, new String[]{"../ressources/bigcat.jpg","../ressources/bigcat.jpg"}));
     }
 
     @Override
