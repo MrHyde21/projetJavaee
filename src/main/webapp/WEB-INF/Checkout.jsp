@@ -11,12 +11,18 @@
         <table border="1">
             <%
                 Map<Product, Integer> cart = (Map<Product, Integer>)request.getAttribute("cartProducts");
+                System.out.println("cart="+cart);
+                System.out.println(cart.isEmpty());
                 Double totalAmount = 0.0;
-                for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
-                    Product product = (Product)entry.getKey();
-                    int qty = (Integer)entry.getValue();
-                    Double rowAmount = product.getPrix() * qty;
-                    totalAmount += rowAmount;
+                if(cart.isEmpty() || cart == null){
+                    System.out.println("emptyCart");
+                }else{
+                    System.out.println("fullcart");
+                    for (Map.Entry<Product, Integer> entry : cart.entrySet()) {
+                        Product product = entry.getKey();
+                        int qty = entry.getValue();
+                        Double rowAmount = product.getPrix() * qty;
+                        totalAmount += rowAmount;
             %>
             <tr>
                 <td>
@@ -41,8 +47,11 @@
                     CHF <%=rowAmount.toString()%>.-
                 </td>
             </tr>
-            <%}
-                request.getSession().setAttribute("totalAmount", totalAmount);%>
+            <%
+                    }
+                }
+                request.getSession().setAttribute("totalAmount", totalAmount);
+            %>
         </table>
         <div>
             <h3>Total</h3>

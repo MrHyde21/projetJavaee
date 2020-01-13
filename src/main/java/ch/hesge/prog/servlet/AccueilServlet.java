@@ -25,7 +25,7 @@ public class AccueilServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Product> products = productService.getProducts();
-        List selection= new ArrayList();
+        List<Product> selection= new ArrayList();
         for(int i=0;i<SELECTION_SIZE;i++){
             selection.add(products.get(i));
         }

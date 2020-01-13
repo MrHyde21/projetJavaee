@@ -9,7 +9,7 @@
         int sum = 0;
         if(cart == null) {
         } else {
-            List<Integer> values = new ArrayList<>(cart.values());
+            List<Integer> values = new ArrayList(cart.values());
             for (Integer value: values) {
                 sum += value;
             }

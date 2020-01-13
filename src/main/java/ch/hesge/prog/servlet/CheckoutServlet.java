@@ -14,7 +14,7 @@ public class CheckoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("Dans doGet checkout");
         Map<Product, Integer> cartProducts = (Map<Product, Integer>) req.getSession().getAttribute("cartProducts");
-        System.out.println("Après carProducts");
+        System.out.println(cartProducts);
         req.setAttribute("cartProducts", cartProducts);
         System.out.println("Après set attribute");
         req.getRequestDispatcher(req.getContextPath()+"WEB-INF/Checkout.jsp").forward(req, resp);
