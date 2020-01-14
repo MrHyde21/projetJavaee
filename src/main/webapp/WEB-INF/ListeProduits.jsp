@@ -26,7 +26,6 @@
         <script>
             alert("Merci de votre paiement");
         </script>
-        <% System.out.println("TEST");%>
     </c:if>
 </head>
 <body>
@@ -45,15 +44,15 @@
             <div class="row">
                 <c:forEach var="product" items="${products}">
                     <div class="col-sm">
-                        <a  href="${pageContext.request.contextPath}/produit?id=${product.id}">
+                        <a  href="produit?id=${product.id}">
                             <span class="product d-flex flex-column justify-content-between" style="background-image: url('${pageContext.request.contextPath}/${product.imageSrc[0]}')">
                                 <h2 class="prodTitle p-2">${product.nom}</h2>
-                                <span class="priceTag custom-control-inline p-2 align-self-center">
-                                    CHF ${product.prix}
-                                    <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add&page=list">
-                                        <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
-                                    </a>
-                                </span>
+                                <a href="checkout?id=${product.id}&action=add&page=list">
+                                    <span class="priceTag custom-control-inline p-2 align-self-center">
+                                        CHF ${product.prix} .-
+                                            <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
+                                    </span>
+                                </a>
                             </span>
                         </a>
                     </div>

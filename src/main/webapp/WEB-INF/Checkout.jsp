@@ -1,7 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="ch.hesge.prog.model.Product" %>
-<%@ page import="java.util.Set" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
@@ -27,7 +24,7 @@
                     <td>
                         <a href="${pageContext.request.contextPath}/checkout?id=${product.getKey().getId()}&action=delete">
                             <button id="${product.key.getId()}">
-                                <img src="../ressources/poubelle.png" class="trash">
+                                <img src="${pageContext.request.contextPath}/ressources/poubelle.png" class="trash">
                             </button>
                         </a>
                     </td>

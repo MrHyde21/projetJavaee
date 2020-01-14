@@ -2,14 +2,11 @@ package ch.hesge.prog.servlet;
 
 import ch.hesge.prog.model.Product;
 import ch.hesge.prog.service.ProductService;
-
-import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +27,6 @@ public class AccueilServlet extends HttpServlet {
             selection.add(products.get(i));
         }
         req.setAttribute("selection", selection);
-        req.getRequestDispatcher("/WEB-INF/Accueil.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/Accueil.jsp").forward(req, resp);
     }
 }

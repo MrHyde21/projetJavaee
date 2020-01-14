@@ -40,15 +40,15 @@
                 <c:forEach var="product" items="${selection}">
                     <div class="col-sm">
                         <a  href="${pageContext.request.contextPath}/produit?id=${product.id}">
-                            <div class="product d-flex flex-column justify-content-between" style="background-image: url('${product.imageSrc[0]}')">
+                            <span class="product d-flex flex-column justify-content-between" style="background-image: url('${pageContext.request.contextPath}/${product.imageSrc[0]}')">
                                     <h2 class="prodTitle p-2">${product.nom}</h2>
+                                <a href="checkout?id=${product.id}&action=add&page=home">
                                     <div class="priceTag custom-control-inline p-2 align-self-center">
-                                        CHF ${product.prix}
-                                        <a href="${pageContext.request.contextPath}/checkout?id=${product.id}&action=add&page=home">
+                                        CHF ${product.prix} .-
                                          <img class="cartProduit" src="${pageContext.request.contextPath}/ressources/cart.jpg"/>
-                                        </a>
                                     </div>
-                            </div>
+                                </a>
+                            </span>
                         </a>
                     </div>
                 </c:forEach>

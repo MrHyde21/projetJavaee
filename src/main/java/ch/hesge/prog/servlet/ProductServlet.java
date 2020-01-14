@@ -20,6 +20,6 @@ public class ProductServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         Product product = productService.getProduct(id);
         req.setAttribute("product", product);
-        req.getRequestDispatcher("/WEB-INF/DetailProduit.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/DetailProduit.jsp").forward(req, resp);
     }
 }

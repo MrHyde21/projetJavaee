@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,10 +24,11 @@ public class CheckoutServlet extends HttpServlet {
         String idProduct = req.getParameter("id");
         Product product = null;
         String page = req.getParameter("page");
+        String context = req.getContextPath();
 
         if (action == null) {
             req.setAttribute("cart", cart);
-            req.getRequestDispatcher( "/WEB-INF/Checkout.jsp").forward(req, resp);
+            req.getRequestDispatcher( "WEB-INF/Checkout.jsp").forward(req, resp);
         } else {
             product = productService.getProduct(Integer.parseInt(idProduct));
             if (action.equals("add")) {
@@ -37,20 +37,19 @@ public class CheckoutServlet extends HttpServlet {
                 } else {
                     cart.put(product, 1);
                 }
-                //
                 req.getSession().setAttribute("cart", cart);
                 req.setAttribute("cart", cart);
                 req.getSession().setAttribute("sumCart", getSumCart(cart));
                 req.getSession().setAttribute("nbCartItems", getNbCartItems(cart));
                 if(page != null){
                 if(page.equals("home")){
-                    resp.sendRedirect("/Accueil");
+                    resp.sendRedirect("Accueil");
                 }  else if(page.equals("list")){
-                    resp.sendRedirect("/produits");
+                    resp.sendRedirect("produits");
                 } else if (page.equals("detail")){
-                    resp.sendRedirect("/produit?id="+idProduct);
+                    resp.sendRedirect("produit?id="+idProduct);
                 }}
-                else req.getRequestDispatcher( "/WEB-INF/Checkout.jsp").forward(req, resp);
+                else req.getRequestDispatcher( "WEB-INF/Checkout.jsp").forward(req, resp);
             } else if (action.equals("remove")) {
                 if (cart.get(product) > 1) {
                     cart.replace(product, cart.get(product) - 1);
@@ -59,14 +58,14 @@ public class CheckoutServlet extends HttpServlet {
                 req.setAttribute("cart", cart);
                 req.getSession().setAttribute("sumCart", getSumCart(cart));
                 req.getSession().setAttribute("nbCartItems", getNbCartItems(cart));
-                req.getRequestDispatcher( "/WEB-INF/Checkout.jsp").forward(req, resp);
+                req.getRequestDispatcher( "WEB-INF/Checkout.jsp").forward(req, resp);
             } else if (action.equals("delete")) {
                 cart.remove(product);
                 req.getSession().setAttribute("cart", cart);
                 req.setAttribute("cart", cart);
                 req.getSession().setAttribute("sumCart", getSumCart(cart));
                 req.getSession().setAttribute("nbCartItems", getNbCartItems(cart));
-                req.getRequestDispatcher( "/WEB-INF/Checkout.jsp").forward(req, resp);
+                req.getRequestDispatcher( "WEB-INF/Checkout.jsp").forward(req, resp);
             }
         }
     }
